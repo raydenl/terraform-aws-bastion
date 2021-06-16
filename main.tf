@@ -147,6 +147,20 @@ data "aws_iam_policy_document" "bastion_host_policy_document" {
     ]
     resources = ["${aws_s3_bucket.bucket.arn}/logs/*"]
   }
+  
+  statement {
+    actions = [
+      "ec2:*"
+    ]
+    resources = ["*"]
+  }
+  
+  statement {
+    actions = [
+      "iam:*"
+    ]
+    resources = ["*"]
+  }
 
   statement {
     actions = [
