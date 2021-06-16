@@ -273,7 +273,6 @@ resource "aws_launch_template" "bastion_launch_template" {
   }
   iam_instance_profile {
     arn = aws_iam_instance_profile.bastion_host_profile.arn
-    name = aws_iam_instance_profile.bastion_host_profile.name
   }
   key_name = var.bastion_host_key_pair
 
