@@ -254,8 +254,8 @@ resource "aws_lb_listener" "bastion_lb_listener_22" {
 }
 
 resource "aws_iam_instance_profile" "bastion_host_profile" {
+  name = "bastion_host_profile"
   role = aws_iam_role.bastion_host_role.name
-  path = "/"
 }
 
 resource "aws_launch_template" "bastion_launch_template" {
@@ -272,6 +272,7 @@ resource "aws_launch_template" "bastion_launch_template" {
     delete_on_termination       = true
   }
   iam_instance_profile {
+    arn = aws_iam_instance_profile.bastion_host_profile.arn
     name = aws_iam_instance_profile.bastion_host_profile.name
   }
   key_name = var.bastion_host_key_pair
